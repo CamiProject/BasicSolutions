@@ -5,6 +5,7 @@ from typing import List
 def three_sum_optimized(nums: List[int]) -> List[List[int]]:
     # 1. 排序：这是双指针法的前提，能让相同的数相邻，方便去重
     nums.sort()
+    # res的结构，外层是list，内层也是list
     res: List[List[int]] = []
     n = len(nums)
 
