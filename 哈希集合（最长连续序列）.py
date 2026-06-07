@@ -33,3 +33,7 @@ def longestConsecutive(nums):
     # 循环结束后，最后一次连续序列可能还没更新到max_len中
     # 因此最后再比较一次取最大值
     return max(max_len, current_len)
+
+
+# 进阶解法是，哈希集合
+
