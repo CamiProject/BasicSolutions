@@ -8,3 +8,12 @@ def mergeKLists(lists):
     for i, node in enumerate(lists):
         if node:
             heapq.heappush(heap, (node.val, i, node))
+    while heap:
+        # 弹出当前最小节点
+        val, i, node = heapq.heappop(heap)
+        curr.next = node    # 接到结果链表末尾
+        curr = curr.next    # 移动当前指针
+    
+        if node.next:       # 如果弹出节点有后续节点
+            heapq.heappush(heap, (node.next.val, i, node.next))
+        return dummy.next
