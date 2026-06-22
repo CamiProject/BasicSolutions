@@ -1,3 +1,14 @@
 # 核心思路是，迭代：用 显式栈 模拟系统调用栈，维护当前指针持续向左走，途经节点 压栈 → 向左走到空 → 弹出栈顶 并访问该节点；然后指针转向其 右子树，并重复上述过程。
 # 终止条件 = 栈空 且 指针为空
 
+def inorderTraversal(root):
+    result, stack = [], []
+    curr = root
+    while curr or stack:
+        while curr:
+            stack.append(curr)
+            curr = curr.left
+        curr = stack.pop()
+        result.append(curr.val)
+        curr = curr.right
+    return result
