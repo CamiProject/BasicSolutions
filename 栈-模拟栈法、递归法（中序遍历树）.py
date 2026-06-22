@@ -12,3 +12,16 @@ def inorderTraversal(root):
         result.append(curr.val)
         curr = curr.right
     return result
+
+# 第二种(简单)解法：直接递归
+
+def inorderTraversal(root):
+    result = []
+    def dfs(node):
+        if not node:
+            return
+        dfs(node.left)
+        result.append(node.val)
+        dfs(node.right)
+    dfs(root)
+    return result
