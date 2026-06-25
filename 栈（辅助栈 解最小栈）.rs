@@ -1,4 +1,4 @@
-// rust重写
+// rust重写 （rust兼具安全性和极致性能）
 
 struct MinStack {
     stack: Vec<i32>,
