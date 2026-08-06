@@ -18,7 +18,36 @@
 编写简易调用示例。
 
 import os
-import 
+import json
+import argparse
+import logging
+import typing
+
+logging.basicConfig()
+logger = logging.getLogger(__name__)
+
+class LogRecord:
+    """结构化一些全局变量先"""
+    def __init__(self, file_path: str, raw_line: str):
+        self.file_path = file_path
+        self.raw_line = raw_line.strip()
+
+class LogAnalyzer:
+    """放一些log分析的handler"""
+    def __init__(self, log_dir: str):
+        self.log_dir = log_dir
+    def scan_log_files(self) -> Iterator[str]:
+        """先扫描一下获取到所有的file路径"""
+        if not os.path.isdir(self.log_dir):
+            raise FlieNotFoundError(f"日志目录不存在")
+        for filename in os.listdir(self.log_dir):
+            full_path = os.path.join(self.log_dir, filename)
+            if os.path.isfile(full_path) and full_path.endswith(".log"):
+                yield full_path
+
+if __name__ = "__main__":
+    main()
+
 
 题目 2：并发任务调度实战（线程 / 进程 / 协程选型，区分同步 & 异步）
 需求
